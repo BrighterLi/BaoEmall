@@ -3,9 +3,25 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <!-- 标题栏颜色 -->
         <item name="colorPrimary">@color/colorPrimary</item>
+       <!-- 状态栏颜色 -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--toolbar的搜索框的属性-->
+    <style name="toolbar_search">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+
+        <!--<item name="android:background">@drawable/selector_toolbar_search</item>-->
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:paddingLeft">4dp</item>
+
+        <item name="android:singleLine">true</item>
     </style>
 
 </resources>

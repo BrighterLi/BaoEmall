@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <!-- 为自定义组件BaoToolBar添加属性：自定义组件属性-->
+    <declare-styleable name="BaoToolBar">
+        <attr name="rightButtonIcon" format="reference"/>
+        <attr name="isShowSearchView" format="boolean"/>
+        <attr name="rightButtonText" format="string"/>
+    </declare-styleable>
+</resources>
