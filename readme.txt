@@ -29,4 +29,11 @@
     (1)ToolBar的基本使用
     (2)ToolBar自定义
 
+    3 自动轮播广告AndroidImageSlider
+      https://github.com/daimajia/AndroidImageSlider
+      (1)基本使用
+      (2)事件监听
+      (3)架构分析
+
+
 
