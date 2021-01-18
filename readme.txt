@@ -1,12 +1,9 @@
-一 整体架构
-1 整体架构
-  (1) 用FragmentTabHost实现底部菜单
-  (2) ToolBar的基本使用
-  (3) 自定义ToolBar
+1、 整体架构
+用FragmentTabHost实现底部菜单
+ToolBar的基本使用
+自定义ToolBar
 
-2 首页
-
-二 知识内容
+2、 首页
 1 用FragmentTabHost实现底部菜单
   (1) FragmentTabHost的用法
     1) Activity 要继承FragmentActivity
@@ -34,6 +31,10 @@
       (1)基本使用
       (2)事件监听
       (3)架构分析
+
+    4 RecyclerView
+      点击监听
+      数据更新，数据删除
 
 
 
