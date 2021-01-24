@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     //https://www.jianshu.com/p/4d4a83945193
     private void initTab() {
+        //Tab包含Fragment、title、icon
         Tab tabHome = new Tab(HomeFragment.class, R.string.home,R.drawable.selector_icon_home);
         Tab tabHot = new Tab(HomeFragment.class, R.string.hot,R.drawable.selector_icon_hot);
         Tab tabCategory = new Tab(CategoryFragment.class, R.string.category,R.drawable.selector_icon_category);

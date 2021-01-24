@@ -15,6 +15,8 @@ ToolBar的基本使用
       TabHost + Activity(比较老)
       RationButton + Fragment(代码量较大)
       FragmentTabHost + Fragment
+      LinearLayout + TextView
+      LinearLayout+TextView+红点(RelativeLayout) (建议使用这种方式)
   2 ToolBar的使用
        https://www.jianshu.com/p/05ef48b777cc
        ActionBar的升级版，比较灵活，不像ActionBar那么固定。
@@ -33,8 +35,24 @@ ToolBar的基本使用
       (3)架构分析
 
     4 RecyclerView
-      点击监听
-      数据更新，数据删除
+    (1) RecyclerView是什么？
+    RecyclerView是一种新的视图组，目标是为任何基于适配器的视图提供相似的渲染方式。它被作为ListView和GridView控件的升级版，在最新的support-V7版本中提供支持。
+    整体上看RecyclerView架构，提供了一种更精美的体验，高度的适应力，异常的灵活，通过设置它提供的不同LayoutManager，ItemDecoration , ItemAnimator实现很多炫酷的效果。
+    (2)事件监听
+    自己定义
+    (3)数据增删
+    (4)动画
+
+    5 首页商品分类
+    (1) CardView
+    CardView适用于实现卡片式布局效果的重要控件，由appcompat-v7库提供，实际上CardView也是一个FrameLayout，只是额外提供了圆角和阴影效果，看上去有立体的感觉。一般CardView都用在ListView的item布局中。
+
+
+
+
+
+
+
 
 
 

@@ -1,40 +1,68 @@
 package com.xiaoming.baoemall.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.xiaoming.baoemall.Contants;
 import com.xiaoming.baoemall.R;
+import com.xiaoming.baoemall.WareListActivity;
+import com.xiaoming.baoemall.adapter.HomeCatgoryAdapter;
+import com.xiaoming.baoemall.bean.Banner;
+import com.xiaoming.baoemall.bean.Campaign;
+import com.xiaoming.baoemall.bean.HomeCampaign;
+import com.xiaoming.baoemall.http.BaseCallback;
+import com.xiaoming.baoemall.http.OkHttpHelper;
+import com.xiaoming.baoemall.http.SpotsCallBack;
+import com.xiaoming.baoemall.widget.recyclerviewdecoration.CardViewtemDecortion;
 
-public class HomeFragment extends Fragment {
+import android.support.v7.widget.RecyclerView;
+
+import java.util.List;
+
+public class HomeFragment extends BaseFragment {
     private static final String TAG = "HomeFragment";
     private SliderLayout mSliderLayout;
+    private RecyclerView mRecyclerView;
+    private OkHttpHelper httpHelper = OkHttpHelper.getInstance();
+    private List<Banner> mBanner;
+    private HomeCatgoryAdapter mAdatper;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View createView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment, container,false);
         mSliderLayout  = (SliderLayout) view.findViewById(R.id.slider);
+        mRecyclerView = view.findViewById(R.id.recyclerview);
         initSlider();
         return view;
+    }
+
+    @Override
+    public void init() {
+        requestRecyclerViewData();
+        requestImages();
     }
 
     private void initSlider() {
         TextSliderView textSliderView = new TextSliderView(this.getActivity());
         textSliderView
                 .description("漂亮女装")
-                .image("http://m.360buyimg.com/mobilecms/s300x98_jfs/t2416/102/20949846/13425/a3027ebc/55e6d1b9Ne6fd6d8f.jpg");
+                .image("https://tvfiles.alphacoders.com/100/hdclearart-10.png");
         //textSliderView设置监听
         textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
             @Override
@@ -46,7 +74,7 @@ public class HomeFragment extends Fragment {
         TextSliderView textSliderView2 = new TextSliderView(this.getActivity());
         textSliderView2
                 .description("时尚男装")
-                .image("http://m.360buyimg.com/mobilecms/s300x98_jfs/t2416/102/20949846/13425/a3027ebc/55e6d1b9Ne6fd6d8f.jpg");
+                .image("https://tvfiles.alphacoders.com/100/hdclearart-10.png");
         //textSliderView设置监听
         textSliderView2.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
             @Override
@@ -59,7 +87,7 @@ public class HomeFragment extends Fragment {
         TextSliderView textSliderView3 = new TextSliderView(this.getActivity());
         textSliderView3
                 .description("家电秒杀")
-                .image("http://m.360buyimg.com/mobilecms/s300x98_jfs/t2416/102/20949846/13425/a3027ebc/55e6d1b9Ne6fd6d8f.jpg");
+                .image("https://tvfiles.alphacoders.com/100/hdclearart-10.png");
         //textSliderView设置监听
         textSliderView3.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
             @Override
@@ -103,5 +131,64 @@ public class HomeFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mSliderLayout.stopAutoCycle();
+    }
+
+    private  void requestImages(){
+        String url ="http://112.124.22.238:8081/course_api/banner/query?type=1";
+        httpHelper.get(url, new SpotsCallBack<List<Banner>>(getContext()){
+            @Override
+            public void onSuccess(Response response, List<Banner> banners) {
+                mBanner = banners;
+                initSlider();
+            }
+
+            @Override
+            public void onError(Response response, int code, Exception e) {
+                Log.d("HomeFragment", "bright#requestImages#onError:" + e.toString());
+            }
+        });
+    }
+
+    //请求recyclerview列表数据
+    private void requestRecyclerViewData() {
+        httpHelper.get(Contants.API.CAMPAIGN_HOME, new BaseCallback<List<HomeCampaign>>() {
+            @Override
+            public void onBeforeRequest(Request request) {
+            }
+
+            @Override
+            public void onFailure(Request request, Exception e) {
+            }
+
+            @Override
+            public void onResponse(Response response) {
+            }
+
+            @Override
+            public void onSuccess(Response response, List<HomeCampaign> homeCampaigns) {
+                initRecyclerViewData(homeCampaigns);
+            }
+
+            @Override
+            public void onError(Response response, int code, Exception e) {
+            }
+        });
+
+    }
+
+    //初始化recyclerview
+    private  void initRecyclerViewData(List<HomeCampaign> homeCampaigns){
+        mAdatper = new HomeCatgoryAdapter(homeCampaigns,getActivity());
+        mAdatper.setOnCampaignClickListener(new HomeCatgoryAdapter.OnCampaignClickListener() {
+            @Override
+            public void onClick(View view, Campaign campaign) {
+                Intent intent = new Intent(getActivity(), WareListActivity.class);
+                intent.putExtra(Contants.COMPAINGAIN_ID,campaign.getId());
+                startActivity(intent);
+            }
+        });
+        mRecyclerView.setAdapter(mAdatper);
+        mRecyclerView.addItemDecoration(new CardViewtemDecortion());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
     }
 }

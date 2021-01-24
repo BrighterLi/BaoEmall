@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.xiaoming.baoemall.R;
 
-public class CastFragment extends Fragment {
+public class CartFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
