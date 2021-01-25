@@ -39,7 +39,7 @@ public class HomeFragment extends BaseFragment {
     private SliderLayout mSliderLayout;
     private RecyclerView mRecyclerView;
     private OkHttpHelper httpHelper = OkHttpHelper.getInstance();
-    private List<Banner> mBanner;
+    private List<Banner> mBannerList;
     private HomeCatgoryAdapter mAdatper;
 
     @Nullable
@@ -48,18 +48,26 @@ public class HomeFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.home_fragment, container,false);
         mSliderLayout  = (SliderLayout) view.findViewById(R.id.slider);
         mRecyclerView = view.findViewById(R.id.recyclerview);
-        initSlider();
         return view;
     }
 
     @Override
     public void init() {
+        requestBannerData();
         requestRecyclerViewData();
-        requestImages();
     }
 
     private void initSlider() {
-        TextSliderView textSliderView = new TextSliderView(this.getActivity());
+        if(mBannerList != null) {
+            for(Banner banner : mBannerList) {
+                TextSliderView textSliderView = new TextSliderView(this.getActivity());
+                textSliderView.image(banner.getImgUrl());
+                textSliderView.description(banner.getName());
+                textSliderView.setScaleType(BaseSliderView.ScaleType.Fit);
+                mSliderLayout.addSlider(textSliderView);
+            }
+        }
+        /*TextSliderView textSliderView = new TextSliderView(this.getActivity());
         textSliderView
                 .description("漂亮女装")
                 .image("https://tvfiles.alphacoders.com/100/hdclearart-10.png");
@@ -70,7 +78,6 @@ public class HomeFragment extends BaseFragment {
                 Log.d(TAG,"textSliderView#onSliderClick");
             }
         });
-
         TextSliderView textSliderView2 = new TextSliderView(this.getActivity());
         textSliderView2
                 .description("时尚男装")
@@ -82,8 +89,6 @@ public class HomeFragment extends BaseFragment {
                 Log.d(TAG,"textSliderView2#onSliderClick");
             }
         });
-
-
         TextSliderView textSliderView3 = new TextSliderView(this.getActivity());
         textSliderView3
                 .description("家电秒杀")
@@ -95,11 +100,9 @@ public class HomeFragment extends BaseFragment {
                 Log.d(TAG,"textSliderView3#onSliderClick");
             }
         });
-
-
         mSliderLayout.addSlider(textSliderView);
         mSliderLayout.addSlider(textSliderView2);
-        mSliderLayout.addSlider(textSliderView3);
+        mSliderLayout.addSlider(textSliderView3);*/
 
         //指示器
         mSliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
@@ -109,7 +112,7 @@ public class HomeFragment extends BaseFragment {
         //动画
         mSliderLayout.setCustomAnimation(new DescriptionAnimation());
         //SliderLayout监听
-        mSliderLayout.addOnPageChangeListener(new ViewPagerEx.OnPageChangeListener() {
+        /*mSliderLayout.addOnPageChangeListener(new ViewPagerEx.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.d(TAG,"onPageScrolled");
@@ -124,7 +127,7 @@ public class HomeFragment extends BaseFragment {
             public void onPageScrollStateChanged(int state) {
                 Log.d(TAG,"onPageScrollStateChanged");
             }
-        });
+        });*/
     }
 
     @Override
@@ -133,12 +136,13 @@ public class HomeFragment extends BaseFragment {
         mSliderLayout.stopAutoCycle();
     }
 
-    private  void requestImages(){
+    //请求banner的数据
+    private  void requestBannerData(){
         String url ="http://112.124.22.238:8081/course_api/banner/query?type=1";
         httpHelper.get(url, new SpotsCallBack<List<Banner>>(getContext()){
             @Override
             public void onSuccess(Response response, List<Banner> banners) {
-                mBanner = banners;
+                mBannerList = banners;
                 initSlider();
             }
 

@@ -47,6 +47,21 @@ ToolBar的基本使用
     (1) CardView
     CardView适用于实现卡片式布局效果的重要控件，由appcompat-v7库提供，实际上CardView也是一个FrameLayout，只是额外提供了圆角和阴影效果，看上去有立体的感觉。一般CardView都用在ListView的item布局中。
 
+    6 OkHttp
+    (1) Android中网络请求的进化
+    HttpURLConnection —> Http Client(Apache ) —> Volley —> OkHttp
+    (2)OkHttp
+    Http Get
+    OkHttpClient:客户端对象
+    Request：OkHttp中的访问的请求
+    Builder:辅助类
+    Response:OkHttp中的响应
+    Http Post(JSON)
+    MediaType:数据类型
+    RequestBody:请求数据
+
+
+
 
 
 
