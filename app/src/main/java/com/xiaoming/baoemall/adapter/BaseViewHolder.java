@@ -8,16 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class BaseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-
-    private SparseArray<View> views;
-
+    private SparseArray<View> views; //ViewHolder中的View成员变量转而通过view数组来实现
     private BaseAdapter.OnItemClickListener mOnItemClickListener ;
 
     public BaseViewHolder(View itemView,BaseAdapter.OnItemClickListener onItemClickListener){
         super(itemView);
         itemView.setOnClickListener(this);
-
         this.mOnItemClickListener =onItemClickListener;
         this.views = new SparseArray<View>();
     }
@@ -37,7 +33,6 @@ public class BaseViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     public View getView(int viewId) {
         return retrieveView(viewId);
     }
-
 
     protected <T extends View> T retrieveView(int viewId) {
         View view = views.get(viewId);

@@ -80,6 +80,20 @@ ToolBar的基本使用
    11热门商品列表实现(下拉刷新，下拉加载)
    下拉刷新/下拉加载控件:MaterialRefreshLayout
 
+   12 Adapter封装
+   (1)假如有很多个RecyclerView，没必要每次把所有的方法写一遍，可以进行Adapter的封装。
+   (2)封装方法
+   1)数据使用泛型
+   2)数据绑定通过实现抽象方法来实现
+   3)ViewHolder中的View成员变量转而通过view数组来实现
+   4)基类里面提供常用的方法
+
+   13 一级商品分类实现
+   RecyclerView
+
+   14 二级商品列表实现
+    RecyclerView
+
 
 
 

@@ -2,9 +2,6 @@ package com.xiaoming.baoemall.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +22,7 @@ import com.xiaoming.baoemall.utils.Pager;
 
 import java.util.List;
 
+//热卖
 public class HotFragment extends BaseFragment implements Pager.OnPageListener<Wares>{
     private RecyclerView mRecyclerView;
     private MaterialRefreshLayout mRefreshLaout;
@@ -72,12 +70,14 @@ public class HotFragment extends BaseFragment implements Pager.OnPageListener<Wa
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
+    //下拉刷新
     @Override
     public void refresh(List<Wares> datas, int totalPage, int totalCount) {
         mAdatper.refreshData(datas);
         mRecyclerView.scrollToPosition(0);
     }
 
+    //上拉加载更多
     @Override
     public void loadMore(List<Wares> datas, int totalPage, int totalCount) {
         mAdatper.loadMoreData(datas);

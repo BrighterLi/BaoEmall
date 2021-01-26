@@ -34,6 +34,7 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
 
+//首页列表
 public class HomeFragment extends BaseFragment {
     private static final String TAG = "HomeFragment";
     private SliderLayout mSliderLayout;
