@@ -8,13 +8,11 @@ import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-
-
+//自己定义的回调
 public abstract class BaseCallback <T> {
-
-
     public   Type mType;
 
+    //Gson自动解析的对象类型
     static Type getSuperclassTypeParameter(Class<?> subclass)
     {
         Type superclass = subclass.getGenericSuperclass();
@@ -26,16 +24,12 @@ public abstract class BaseCallback <T> {
         return $Gson$Types.canonicalize(parameterized.getActualTypeArguments()[0]);
     }
 
-
     public BaseCallback()
     {
         mType = getSuperclassTypeParameter(getClass());
     }
 
-
-
     public  abstract void onBeforeRequest(Request request);
-
 
     public abstract  void onFailure(Request request, Exception e) ;
 

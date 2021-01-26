@@ -8,12 +8,7 @@ package com.xiaoming.baoemall.bean;
 
 import java.io.Serializable;
 
-/**
- * http://www.cniao5.com
- */
 public class HomeCampaign implements Serializable {
-
-
     private Long id;
     private String title;
     private Campaign cpOne;
@@ -44,7 +39,6 @@ public class HomeCampaign implements Serializable {
     public void setCpThree(Campaign cpThree) {
         this.cpThree = cpThree;
     }
-
 
     public Long getId() {
         return id;

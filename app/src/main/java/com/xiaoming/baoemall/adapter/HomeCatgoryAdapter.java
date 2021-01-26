@@ -19,30 +19,30 @@ import com.xiaoming.baoemall.bean.HomeCampaign;
 import java.util.List;
 
 public class HomeCatgoryAdapter extends RecyclerView.Adapter<HomeCatgoryAdapter.ViewHolder> {
-    private  static int VIEW_TYPE_L=0;
-    private  static int VIEW_TYPE_R=1;
+    private static int VIEW_TYPE_L = 0;
+    private static int VIEW_TYPE_R = 1;
     private LayoutInflater mInflater;
     private List<HomeCampaign> mDatas;
-    private  Context mContext;
-    private  OnCampaignClickListener mListener;
+    private Context mContext;
+    private OnCampaignClickListener mListener;
 
 
-    public HomeCatgoryAdapter(List<HomeCampaign> datas,Context context){
+    public HomeCatgoryAdapter(List<HomeCampaign> datas, Context context) {
         mDatas = datas;
         this.mContext = context;
     }
 
-    public void setOnCampaignClickListener(OnCampaignClickListener listener){
+    public void setOnCampaignClickListener(OnCampaignClickListener listener) {
         this.mListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int type) {
         mInflater = LayoutInflater.from(viewGroup.getContext());
-        if(type == VIEW_TYPE_R){
-            return  new ViewHolder(mInflater.inflate(R.layout.template_home_cardview2,viewGroup,false));
+        if (type == VIEW_TYPE_R) {
+            return new ViewHolder(mInflater.inflate(R.layout.template_home_cardview2, viewGroup, false));
         }
-        return  new ViewHolder(mInflater.inflate(R.layout.template_home_cardview,viewGroup,false));
+        return new ViewHolder(mInflater.inflate(R.layout.template_home_cardview, viewGroup, false));
     }
 
     @Override
@@ -61,16 +61,14 @@ public class HomeCatgoryAdapter extends RecyclerView.Adapter<HomeCatgoryAdapter.
         return mDatas.size();
     }
 
-
     @Override
     public int getItemViewType(int position) {
-        if(position % 2==0){
-            return  VIEW_TYPE_R;
-        }
-        else return VIEW_TYPE_L;
+        if (position % 2 == 0) {
+            return VIEW_TYPE_R;
+        } else return VIEW_TYPE_L;
     }
 
-      class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView textTitle;
         ImageView imageViewBig;
         ImageView imageViewSmallTop;
@@ -90,36 +88,37 @@ public class HomeCatgoryAdapter extends RecyclerView.Adapter<HomeCatgoryAdapter.
 
         @Override
         public void onClick(View v) {
-            if(mListener !=null){
+            if (mListener != null) {
                 anim(v);
             }
         }
 
-          private  void anim(final View v){
-              ObjectAnimator animator =  ObjectAnimator.ofFloat(v, "rotationX", 0.0F, 360.0F)
-                      .setDuration(200);
-              animator.addListener(new AnimatorListenerAdapter() {
-                  @Override
-                  public void onAnimationEnd(Animator animation) {
-                      HomeCampaign campaign = mDatas.get(getLayoutPosition());
-                      switch (v.getId()){
-                          case  R.id.imgview_big:
-                              mListener.onClick(v, campaign.getCpOne());
-                              break;
-                          case  R.id.imgview_small_top:
-                              mListener.onClick(v, campaign.getCpTwo());
-                              break;
-                          case R.id.imgview_small_bottom:
-                              mListener.onClick(v,campaign.getCpThree());
-                              break;
-                      }
-                  }
-              });
-              animator.start();
-          }
+        private void anim(final View v) {
+            ObjectAnimator animator = ObjectAnimator.ofFloat(v, "rotationX", 0.0F, 360.0F)
+                    .setDuration(200);
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    HomeCampaign campaign = mDatas.get(getLayoutPosition());
+                    switch (v.getId()) {
+                        case R.id.imgview_big:
+                            mListener.onClick(v, campaign.getCpOne());
+                            break;
+                        case R.id.imgview_small_top:
+                            mListener.onClick(v, campaign.getCpTwo());
+                            break;
+                        case R.id.imgview_small_bottom:
+                            mListener.onClick(v, campaign.getCpThree());
+                            break;
+                    }
+                }
+            });
+            animator.start();
+        }
     }
 
-    public  interface OnCampaignClickListener{
+    public interface OnCampaignClickListener {
+        //该接口的调用vs实现:实现是直接implements复写，调用是对象的调用该方法
         void onClick(View view, Campaign campaign);
     }
 

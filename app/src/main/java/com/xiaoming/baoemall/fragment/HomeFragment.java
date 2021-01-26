@@ -45,8 +45,8 @@ public class HomeFragment extends BaseFragment {
     @Nullable
     @Override
     public View createView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_fragment, container,false);
-        mSliderLayout  = (SliderLayout) view.findViewById(R.id.slider);
+        View view = inflater.inflate(R.layout.home_fragment, container, false);
+        mSliderLayout = (SliderLayout) view.findViewById(R.id.slider);
         mRecyclerView = view.findViewById(R.id.recyclerview);
         return view;
     }
@@ -58,8 +58,8 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initSlider() {
-        if(mBannerList != null) {
-            for(Banner banner : mBannerList) {
+        if (mBannerList != null) {
+            for (Banner banner : mBannerList) {
                 TextSliderView textSliderView = new TextSliderView(this.getActivity());
                 textSliderView.image(banner.getImgUrl());
                 textSliderView.description(banner.getName());
@@ -137,9 +137,9 @@ public class HomeFragment extends BaseFragment {
     }
 
     //请求banner的数据
-    private  void requestBannerData(){
-        String url ="http://112.124.22.238:8081/course_api/banner/query?type=1";
-        httpHelper.get(url, new SpotsCallBack<List<Banner>>(getContext()){
+    private void requestBannerData() {
+        String url = "http://112.124.22.238:8081/course_api/banner/query?type=1";
+        httpHelper.get(url, new SpotsCallBack<List<Banner>>(getContext()) {
             @Override
             public void onSuccess(Response response, List<Banner> banners) {
                 mBannerList = banners;
@@ -181,13 +181,13 @@ public class HomeFragment extends BaseFragment {
     }
 
     //初始化recyclerview
-    private  void initRecyclerViewData(List<HomeCampaign> homeCampaigns){
-        mAdatper = new HomeCatgoryAdapter(homeCampaigns,getActivity());
+    private void initRecyclerViewData(List<HomeCampaign> homeCampaigns) {
+        mAdatper = new HomeCatgoryAdapter(homeCampaigns, getActivity());
         mAdatper.setOnCampaignClickListener(new HomeCatgoryAdapter.OnCampaignClickListener() {
             @Override
             public void onClick(View view, Campaign campaign) {
                 Intent intent = new Intent(getActivity(), WareListActivity.class);
-                intent.putExtra(Contants.COMPAINGAIN_ID,campaign.getId());
+                intent.putExtra(Contants.COMPAINGAIN_ID, campaign.getId());
                 startActivity(intent);
             }
         });

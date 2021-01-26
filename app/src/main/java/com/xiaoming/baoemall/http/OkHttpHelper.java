@@ -42,12 +42,13 @@ public class OkHttpHelper {
         return mInstance;
     }
 
+    //get方式请求
     public void get(String url, BaseCallback callback) {
         Request request = buildGetRequest(url);
         request(request, callback);
     }
 
-
+    //post方式请求
     public void post(String url, Map<String, String> param, BaseCallback callback) {
         Request request = buildPostRequest(url, param);
         request(request, callback);
@@ -56,11 +57,13 @@ public class OkHttpHelper {
     public void request(final Request request, final BaseCallback callback) {
         callback.onBeforeRequest(request);
         mHttpClient.newCall(request).enqueue(new Callback() {
+            //请求网络时出现不可恢复的错误时调用该方法
             @Override
             public void onFailure(Request request, IOException e) {
                 callbackFailure(callback, request, e);
             }
 
+            //请求网络成功时调用该方法
             @Override
             public void onResponse(Response response) throws IOException {
 //                    callback.onResponse(response);
@@ -68,7 +71,7 @@ public class OkHttpHelper {
                 if (response.isSuccessful()) {
                     String resultStr = response.body().string();
                     Log.d(TAG, "result=" + resultStr);
-                    if (callback.mType == String.class) {
+                    if (callback.mType == String.class) { //String类型
                         callbackSuccess(callback, response, resultStr);
                     } else {
                         try {
@@ -153,6 +156,7 @@ public class OkHttpHelper {
         return builder.build();
     }
 
+    //枚举
     enum HttpMethodType {
         GET,
         POST,

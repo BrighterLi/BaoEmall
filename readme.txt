@@ -60,6 +60,26 @@ ToolBar的基本使用
     MediaType:数据类型
     RequestBody:请求数据
 
+    7 OkHttp的简单封装
+    get,post
+    request
+    callback
+
+   8 主页商品分类重构
+
+   9 Fresco(FaceBook)
+   (1) Fresco介绍
+   图片加载组件，图片下载和内存管理，图片显示
+   (2)Fresco使用
+   基本使用；渐进式加载图片；多图加载；事件监听
+
+   10 下拉刷新SwipeRefreshLayout控件
+    可以用于RecyclerView,ListView,GridView
+    不支持上拉加载
+
+   11热门商品列表实现(下拉刷新，下拉加载)
+   下拉刷新/下拉加载控件:MaterialRefreshLayout
+
 
 
 

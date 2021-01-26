@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.xiaoming.baoemall.bean.Tab;
 import com.xiaoming.baoemall.fragment.CategoryFragment;
 import com.xiaoming.baoemall.fragment.HomeFragment;
+import com.xiaoming.baoemall.fragment.HotFragment;
 import com.xiaoming.baoemall.widget.FragmentTabHost;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private void initTab() {
         //Tab包含Fragment、title、icon
         Tab tabHome = new Tab(HomeFragment.class, R.string.home,R.drawable.selector_icon_home);
-        Tab tabHot = new Tab(HomeFragment.class, R.string.hot,R.drawable.selector_icon_hot);
+        Tab tabHot = new Tab(HotFragment.class, R.string.hot,R.drawable.selector_icon_hot);
         Tab tabCategory = new Tab(CategoryFragment.class, R.string.category,R.drawable.selector_icon_category);
         Tab tabCart = new Tab(HomeFragment.class, R.string.cart,R.drawable.selector_icon_cart);
         Tab tabMine = new Tab(HomeFragment.class, R.string.mine,R.drawable.selector_icon_mine);
