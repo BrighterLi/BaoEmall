@@ -1,17 +1,21 @@
 package com.xiaoming.baoemall;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.xiaoming.baoemall.bean.Tab;
+import com.xiaoming.baoemall.fragment.CartFragment;
 import com.xiaoming.baoemall.fragment.CategoryFragment;
 import com.xiaoming.baoemall.fragment.HomeFragment;
 import com.xiaoming.baoemall.fragment.HotFragment;
+import com.xiaoming.baoemall.fragment.MineFragment;
 import com.xiaoming.baoemall.widget.FragmentTabHost;
 
 import java.util.ArrayList;
@@ -22,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private LayoutInflater mLInflater;
 
     private List<Tab> mTabList = new ArrayList<>(5);
+    private CartFragment cartFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         Tab tabHome = new Tab(HomeFragment.class, R.string.home,R.drawable.selector_icon_home);
         Tab tabHot = new Tab(HotFragment.class, R.string.hot,R.drawable.selector_icon_hot);
         Tab tabCategory = new Tab(CategoryFragment.class, R.string.category,R.drawable.selector_icon_category);
-        Tab tabCart = new Tab(HomeFragment.class, R.string.cart,R.drawable.selector_icon_cart);
-        Tab tabMine = new Tab(HomeFragment.class, R.string.mine,R.drawable.selector_icon_mine);
+        Tab tabCart = new Tab(CartFragment.class, R.string.cart,R.drawable.selector_icon_cart);
+        Tab tabMine = new Tab(MineFragment.class, R.string.mine,R.drawable.selector_icon_mine);
 
         mTabList.add(tabHome);
         mTabList.add(tabHot);
@@ -85,6 +90,29 @@ public class MainActivity extends AppCompatActivity {
         mTabHost.getTabWidget().setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
         //设置默认显示第一个
         mTabHost.setCurrentTab(0);
+
+        mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                if(tabId == getString(R.string.cart)) {
+                    refData();
+                }
+            }
+        });
+    }
+
+    //刷新页面
+    private void refData(){
+        if(cartFragment == null){
+            Fragment fragment =  getSupportFragmentManager().findFragmentByTag(getString(R.string.cart));
+            if(fragment !=null){
+                cartFragment= (CartFragment) fragment;
+                cartFragment.refData();
+            }
+        }
+        else{
+            cartFragment.refData();
+        }
     }
 
     //Indicator包含TextView和ImageView

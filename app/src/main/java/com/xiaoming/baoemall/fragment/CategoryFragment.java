@@ -2,9 +2,6 @@ package com.xiaoming.baoemall.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -74,6 +71,7 @@ public class CategoryFragment extends BaseFragment {
         initRefreshLayout();
     }
 
+    //上拉刷新下拉加载
     private void initRefreshLayout() {
         mRefreshLaout.setLoadMore(true);
         mRefreshLaout.setMaterialRefreshListener(new MaterialRefreshListener() {
@@ -94,12 +92,14 @@ public class CategoryFragment extends BaseFragment {
         });
     }
 
+    //刷新
     private void refreshData() {
         currPage = 1;
         state = STATE_REFREH;
         requestWares(category_id);
     }
 
+    //加载更多
     private void loadMoreData() {
         currPage = ++currPage;
         state = STATE_MORE;

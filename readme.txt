@@ -28,13 +28,13 @@ ToolBar的基本使用
     (1)ToolBar的基本使用
     (2)ToolBar自定义
 
-    3 自动轮播广告AndroidImageSlider
+    3 主页Tab—自动轮播广告AndroidImageSlider
       https://github.com/daimajia/AndroidImageSlider
       (1)基本使用
       (2)事件监听
       (3)架构分析
 
-    4 RecyclerView
+    4 主页Tab—RecyclerView
     (1) RecyclerView是什么？
     RecyclerView是一种新的视图组，目标是为任何基于适配器的视图提供相似的渲染方式。它被作为ListView和GridView控件的升级版，在最新的support-V7版本中提供支持。
     整体上看RecyclerView架构，提供了一种更精美的体验，高度的适应力，异常的灵活，通过设置它提供的不同LayoutManager，ItemDecoration , ItemAnimator实现很多炫酷的效果。
@@ -43,7 +43,7 @@ ToolBar的基本使用
     (3)数据增删
     (4)动画
 
-    5 首页商品分类
+    5 主页Tab—首页商品分类
     (1) CardView
     CardView适用于实现卡片式布局效果的重要控件，由appcompat-v7库提供，实际上CardView也是一个FrameLayout，只是额外提供了圆角和阴影效果，看上去有立体的感觉。一般CardView都用在ListView的item布局中。
 
@@ -65,7 +65,7 @@ ToolBar的基本使用
     request
     callback
 
-   8 主页商品分类重构
+   8 主页Tab—主页商品分类重构
 
    9 Fresco(FaceBook)
    (1) Fresco介绍
@@ -77,7 +77,7 @@ ToolBar的基本使用
     可以用于RecyclerView,ListView,GridView
     不支持上拉加载
 
-   11热门商品列表实现(下拉刷新，下拉加载)
+   11热卖Tab—热门商品列表实现(下拉刷新，下拉加载)
    下拉刷新/下拉加载控件:MaterialRefreshLayout
 
    12 Adapter封装
@@ -88,12 +88,35 @@ ToolBar的基本使用
    3)ViewHolder中的View成员变量转而通过view数组来实现
    4)基类里面提供常用的方法
 
-   13 一级商品分类实现
+   13 商品分类Tab— 一级商品分类实现
    RecyclerView
 
-   14 二级商品列表实现
+   14 商品分类Tab— 二级商品列表实现
     RecyclerView
 
+  15 购物车-自定义控件
+   自定义数字加减控件:
+   1)输入框只能是数字，且不能通过键盘输入
+   2)通过加减按钮操作数字
+   3)监听加减按钮
+   4)数字有最小值和最大值区别
+   5)自定义属性
+
+  16 购物车-数据
+  (1)购物车数据存储器
+  1)数据存储在本地(用什么方式存储？为什么要存储)
+  2)提供put、update、delete、getAll方法
+  3)put数据时如购物车中存在相同的产品数量加1
+  (2)SharedPreference
+  要存储在本地，具体的数据可以转成json存在SharedPreference；不用本地数据库，是因为数据量不大
+
+  17 购物车Tab—商品显示
+   RecyclerView
+
+  18 购物车Tab—商品选择
+  RecyclerView—Adapter—data
+
+  19 购物车Tab—购物车编辑实现
 
 
 
