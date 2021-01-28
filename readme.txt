@@ -129,6 +129,27 @@ ToolBar的基本使用
 
   22商品列表—列表网格切换
 
+  23 native与h5交互
+  (1)Android与H5交互两种情况
+  1)Android调用h5
+  2)h5调用Android
+  (2)步骤
+  1)设置允许执行Js脚本
+  webSettings.setJavaScriptEnabled(true);
+  2)添加通信接口
+  webView.addjavascriptInterface(Interface, "InterfaceName");
+  3)JS调用Android
+  InterfaceName.MethodName
+  4)Android调用JS
+  webView.loadUrl("javascript:functionName()");
+  (3)loadUrl
+  1)本包内部asset目录
+  webView.loadUrl("file:///android_asset/index.html");
+  2)本地sd卡内
+  webView.loadUrl("content://com.android.htmlfileprovider/sdcard/index.html");
+  3)指定URL的html文件
+  webView.loadUrl("http://www.baidu.com");
+
 
 
 
