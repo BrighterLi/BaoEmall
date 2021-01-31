@@ -3,8 +3,6 @@ package com.xiaoming.baoemall.bean;
 import java.io.Serializable;
 
 public class Wares implements Serializable {
-
-
     private Long id;
     private String name;
     private String imgUrl;

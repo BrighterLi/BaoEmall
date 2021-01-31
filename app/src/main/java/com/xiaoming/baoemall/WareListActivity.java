@@ -127,9 +127,7 @@ public class WareListActivity extends AppCompatActivity implements Pager.OnPageL
                 @Override
                 public void onItemClick(View view, int position) {
                     Wares wares = mWaresAdapter.getItem(position);
-
                     Intent intent = new Intent(WareListActivity.this, WareDetailActivity.class);
-
                     intent.putExtra(Contants.WARE,wares);
                     startActivity(intent);
                 }
