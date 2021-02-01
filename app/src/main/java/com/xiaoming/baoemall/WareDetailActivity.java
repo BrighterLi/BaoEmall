@@ -18,6 +18,8 @@ import com.xiaoming.baoemall.widget.BaoToolBar;
 
 import java.io.Serializable;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import dmax.dialog.SpotsDialog;
 
 //h5容器：图文详情页，打开h5页面
@@ -74,14 +76,14 @@ public class WareDetailActivity extends AppCompatActivity implements View.OnClic
         mToolBar.setRightButtonOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //showShare();
+                showShare();
             }
         });
 
     }
 
-    /*private void showShare() {
-        ShareSDK.initSDK(this);
+    private void showShare() {
+        //ShareSDK.initSDK(this);
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
         oks.disableSSOWhenAuthorize();
@@ -114,7 +116,7 @@ public class WareDetailActivity extends AppCompatActivity implements View.OnClic
 
 // 启动分享GUI
         oks.show(this);
-    }*/
+    }
 
     @Override
     protected void onDestroy() {
