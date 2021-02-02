@@ -6,13 +6,14 @@ import com.squareup.okhttp.Response;
 import dmax.dialog.SpotsDialog;
 
 
-public abstract class SpotsCallBack<T> extends BaseCallback<T> {
+public abstract class SpotsCallBack<T> extends SimpleCallback<T> {
     private  Context mContext;
     private  SpotsDialog mDialog;
 
     public SpotsCallBack(Context context){
+        super(context);
         mContext = context;
-        initSpotsDialog();
+        this.initSpotsDialog();
     }
 
     private  void initSpotsDialog(){

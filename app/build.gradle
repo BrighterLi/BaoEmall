@@ -51,11 +51,13 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:0.6.0'
     implementation 'com.android.support:design:28.0.0' //Material Design 统一风格的UI界面
     implementation 'com.jiechic.library:xUtils:2.6.14'
+    implementation 'de.hdodenhof:circleimageview:2.0.0'
     // 注册MobSDK，这里无需引入？引入会报错
     //classpath "com.mob.sdk:MobSDK:2018.0319.1724"
 
 }
-
+//ShareSDK引入技术文档：https://www.mob.com/wiki/detailed?wiki=ShareSDK_Android_Title_ksjc&id=14
+// ShareSDK各社交平台申请APPkey 的网址及申请流程汇总： ShareSDK各社交平台申请APPkey 的网址及申请流程汇总
 MobSDK {
     appKey "323d35e99ec36" //mob官方申请的appkey
     appSecret "81900b2cb33714b5ae30cbd7bade82d7" //mob官方申请的appkey对应的appSecret
@@ -63,9 +65,11 @@ MobSDK {
         loopShare true
         devInfo {
             SinaWeibo {
-                appKey "568898243"
-                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+                appKey "568898243" //在新浪微博申请替换这里的
+                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"  //在新浪微博申请替换这里的
                 callbackUri "http://www.sharesdk.cn"
+                shareByAppClient true
+                enable true
             }
             Wechat {
                 appId "wx4868b35061f87885"

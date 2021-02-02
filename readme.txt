@@ -158,7 +158,12 @@ ToolBar的基本使用
   mob.com
 
   26 用户登录
+   密码加密 des
+   服务器返回token+用户信息
 
+  27 api权限
+  token保护api,token验证成功后才会返回api数据
+  401：token丢失；402：token错误；403：token过期
 
 
 

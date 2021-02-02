@@ -205,6 +205,11 @@ public class CategoryFragment extends BaseFragment {
             @Override
             public void onError(Response response, int code, Exception e) {
             }
+
+            @Override
+            public void onTokenError(Response response, int code) {
+
+            }
         });
     }
 
