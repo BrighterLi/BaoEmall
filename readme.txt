@@ -165,6 +165,12 @@ ToolBar的基本使用
   token保护api,token验证成功后才会返回api数据
   401：token丢失；402：token错误；403：token过期
 
+  28 APP登录拦截
+    跳转过程中判断是否登录
+
+  29 短信sdk集成
+  用户注册
+
 
 
 

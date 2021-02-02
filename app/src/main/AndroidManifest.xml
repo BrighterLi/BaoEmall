@@ -24,7 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".login.LoginActivity"></activity>
+        <activity android:name=".login.RegisterSecondActivity"></activity>
+        <activity android:name=".login.RegisterActivity" />
+        <activity android:name=".BaseActivity" />
+        <activity android:name=".login.LoginActivity" />
         <activity android:name=".mine.MyOrderActivity" />
         <activity android:name=".mine.MyFavoriteActivity" />
         <activity android:name=".mine.AddressListActivity" />

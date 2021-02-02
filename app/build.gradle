@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.mob.sdk' //引入分享插件
+apply plugin: 'com.mob.sdk' //引入分享插件、短信验证码
 
 android {
     compileSdkVersion 29
@@ -61,6 +61,9 @@ dependencies {
 MobSDK {
     appKey "323d35e99ec36" //mob官方申请的appkey
     appSecret "81900b2cb33714b5ae30cbd7bade82d7" //mob官方申请的appkey对应的appSecret
+
+    SMSSDK {} //短信验证码
+
     ShareSDK {
         loopShare true
         devInfo {

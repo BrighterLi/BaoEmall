@@ -31,6 +31,7 @@ public abstract class BaseFragment extends Fragment {
 
     public abstract void init();
 
+    //APP登录拦截， 跳转过程中判断是否登录
     public void startActivity(Intent intent,boolean isNeedLogin){
         if(isNeedLogin){
             User user = EmallApplication.getInstance().getUser();

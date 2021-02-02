@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="40dp"
-        android:background="@drawable/selector_view_block"
+
         android:padding="@dimen/largePadding">
 
         <com.xiaoming.baoemall.widget.ClearEditText

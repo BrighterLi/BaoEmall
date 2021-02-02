@@ -1,10 +1,12 @@
 package com.xiaoming.baoemall.login;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -32,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     private ClearEditText mEtxtPhone;
     @ViewInject(R.id.etxt_pwd)
     private ClearEditText mEtxtPwd;
+    @ViewInject(R.id.txt_toReg)
+    private TextView mEtxtRegister;
 
     private OkHttpHelper okHttpHelper = OkHttpHelper.getInstance();
 
@@ -39,19 +43,22 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        mEtxtRegister = (TextView)findViewById(R.id.txt_toReg);
         ViewUtils.inject(this);
+        mEtxtRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
 
         initToolBar();
     }
 
     private void initToolBar(){
-
-
         mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 LoginActivity.this.finish();
             }
         });
@@ -61,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         finish();
     }
 
