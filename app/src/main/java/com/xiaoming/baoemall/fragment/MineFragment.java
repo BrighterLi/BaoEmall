@@ -1,12 +1,8 @@
 package com.xiaoming.baoemall.fragment;
 
-import android.app.Application;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +21,7 @@ import com.xiaoming.baoemall.bean.User;
 import com.xiaoming.baoemall.login.LoginActivity;
 import com.xiaoming.baoemall.mine.AddressListActivity;
 import com.xiaoming.baoemall.mine.MyFavoriteActivity;
-import com.xiaoming.baoemall.mine.MyOrderActivity;
+import com.xiaoming.baoemall.order.MyOrderActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -39,6 +35,10 @@ public class MineFragment extends BaseFragment {
     @ViewInject(R.id.btn_logout)
     private Button mbtnLogout;
 
+    private TextView mMyOrders;
+    private TextView mMyAddress;
+    private TextView mMyFavorite;
+
 
     @Override
     public View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,17 +47,37 @@ public class MineFragment extends BaseFragment {
         mbtnLogout = view.findViewById(R.id.btn_logout);
         mTxtUserName = view.findViewById(R.id.txt_username);
         mImageHead = view.findViewById(R.id.img_head);
+        mMyOrders = view.findViewById(R.id.txt_my_orders);
+        mMyAddress = view.findViewById(R.id.txt_my_address);
+        mMyFavorite = view.findViewById(R.id.txt_my_favorite);
         mTxtUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toLoginActivity(v);
             }
         });
-
         mImageHead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toLoginActivity(v);
+            }
+        });
+        mMyOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toMyOrderActivity(v);
+            }
+        });
+        mMyAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toAddressActivity(v);
+            }
+        });
+        mMyFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toFavoriteActivity(v);
             }
         });
         return view;
@@ -87,19 +107,22 @@ public class MineFragment extends BaseFragment {
         startActivityForResult(intent, Contants.REQUEST_CODE);
     }
 
-    @OnClick(R.id.txt_my_orders)
+    //@OnClick(R.id.txt_my_orders)
     public void toMyOrderActivity(View view) {
-        startActivity(new Intent(getActivity(), MyOrderActivity.class), true);
+        //startActivity(new Intent(getActivity(), MyOrderActivity.class), true);
+        startActivity(new Intent(getActivity(), MyOrderActivity.class));
     }
 
     @OnClick(R.id.txt_my_address)
     public void toAddressActivity(View view) {
-        startActivity(new Intent(getActivity(), AddressListActivity.class), true);
+        //startActivity(new Intent(getActivity(), AddressListActivity.class), true);
+        startActivity(new Intent(getActivity(), AddressListActivity.class));
     }
 
     @OnClick(R.id.txt_my_favorite)
     public void toFavoriteActivity(View view) {
-        startActivity(new Intent(getActivity(), MyFavoriteActivity.class), true);
+        //startActivity(new Intent(getActivity(), MyFavoriteActivity.class), true);
+        startActivity(new Intent(getActivity(), MyFavoriteActivity.class));
     }
 
     @Override
