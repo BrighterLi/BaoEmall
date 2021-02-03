@@ -35,6 +35,7 @@
     <dimen name="ware_img_height">150dp</dimen>
     <dimen name="ware_img_width">150dp</dimen>
     <dimen name="category_layout_width">120dp</dimen>
+    <dimen name="small_ware_img_width">100dp</dimen>
 
 
 </resources>
