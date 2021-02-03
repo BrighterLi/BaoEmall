@@ -4,7 +4,7 @@
  *Copyright(c)2014 Guangzhou Onion Information Technology Co., Ltd.
  *http://www.cniao5.com
  */
-package com.xiaoming.baoemall.mine.bean;
+package com.xiaoming.baoemall.address.bean;
 
 import java.io.Serializable;
 

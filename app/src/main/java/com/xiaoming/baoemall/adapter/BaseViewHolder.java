@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.CheckBox;
 
 public class BaseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private SparseArray<View> views; //ViewHolder中的View成员变量转而通过view数组来实现
@@ -23,6 +24,10 @@ public class BaseViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     }
 
     public Button getButton(int viewId) {
+        return retrieveView(viewId);
+    }
+
+    public CheckBox getCheckBox(int viewId) {
         return retrieveView(viewId);
     }
 

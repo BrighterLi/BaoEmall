@@ -25,7 +25,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".order.OrderDetailActivity"></activity>
+        <activity android:name=".address.AddressAddActivity"></activity>
+        <activity android:name=".order.OrderDetailActivity" />
         <activity android:name=".pay.PayResultActivity" />
         <activity android:name=".order.CreateOrderActivity" />
         <activity android:name=".login.RegisterSecondActivity" />
@@ -34,7 +35,7 @@
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".order.MyOrderActivity" />
         <activity android:name=".mine.MyFavoriteActivity" />
-        <activity android:name=".mine.AddressListActivity" />
+        <activity android:name=".address.AddressListActivity" />
         <activity android:name=".WareDetailActivity" />
         <activity android:name=".WareListActivity" />
         <!--

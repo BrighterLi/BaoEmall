@@ -19,7 +19,7 @@ import com.xiaoming.baoemall.EmallApplication;
 import com.xiaoming.baoemall.R;
 import com.xiaoming.baoemall.bean.User;
 import com.xiaoming.baoemall.login.LoginActivity;
-import com.xiaoming.baoemall.mine.AddressListActivity;
+import com.xiaoming.baoemall.address.AddressListActivity;
 import com.xiaoming.baoemall.mine.MyFavoriteActivity;
 import com.xiaoming.baoemall.order.MyOrderActivity;
 

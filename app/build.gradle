@@ -66,6 +66,7 @@ dependencies {
     implementation 'com.pingxx:pingpp-android-cmpay:2.2.2' // 使用和包支付时添加
 
     implementation 'com.w4lle.library:NineLayout:1.0.0'
+    compile 'com.bigkoo:pickerview:2.0.3'
 
 }
 //ShareSDK引入技术文档：https://www.mob.com/wiki/detailed?wiki=ShareSDK_Android_Title_ksjc&id=14

@@ -160,17 +160,14 @@ ToolBar的基本使用
   26 用户登录
    密码加密 des
    服务器返回token+用户信息
-
   27 api权限
   token保护api,token验证成功后才会返回api数据
   401：token丢失；402：token错误；403：token过期
-
   28 APP登录拦截
     跳转过程中判断是否登录
 
   29 短信sdk集成
   用户注册
-
   30 获取短信验证
   短信验证码sdk文档
   请求，回调
@@ -181,13 +178,16 @@ ToolBar的基本使用
   服务端集成
   ping++集成：https://github.com/PingPlusPlus/pingpp-android/tree/master
   https://www.pingxx.com/docs/client/android.html
-
   32 提交订单
-
   33 支付
 
   34 添加收货地址
+  地址：三级联动
+  35 收件地址
 
+  36我的
+
+  37我的订单
 
 
 

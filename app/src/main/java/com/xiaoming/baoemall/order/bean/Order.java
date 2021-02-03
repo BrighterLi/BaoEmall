@@ -6,7 +6,7 @@
 */
 package com.xiaoming.baoemall.order.bean;
 
-import com.xiaoming.baoemall.mine.bean.Address;
+import com.xiaoming.baoemall.address.bean.Address;
 
 import java.io.Serializable;
 import java.util.List;
