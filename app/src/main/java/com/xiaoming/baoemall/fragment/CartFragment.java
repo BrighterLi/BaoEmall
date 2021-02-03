@@ -1,5 +1,6 @@
 package com.xiaoming.baoemall.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import com.xiaoming.baoemall.R;
 import com.xiaoming.baoemall.adapter.CartAdapter;
 import com.xiaoming.baoemall.bean.ShoppingCart;
+import com.xiaoming.baoemall.order.CreateOrderActivity;
 import com.xiaoming.baoemall.utils.CartProvider;
 import com.xiaoming.baoemall.widget.BaoToolBar;
 import com.xiaoming.baoemall.widget.recyclerviewdecoration.DividerItemDecoration;
@@ -48,6 +50,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener {
         mBtnOrder = view.findViewById(R.id.btn_order);
         mBtnDel = view.findViewById(R.id.btn_del);
         mBtnDel.setOnClickListener(this);
+        clickEvent();
         return view;
     }
 
@@ -131,5 +134,14 @@ public class CartFragment extends BaseFragment implements View.OnClickListener {
         mAdapter.checkAll_None(true);
         mAdapter.showTotalPrice();
         mCheckBox.setChecked(true);
+    }
+
+    private void clickEvent() {
+        mBtnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), CreateOrderActivity.class), true);
+            }
+        });
     }
 }

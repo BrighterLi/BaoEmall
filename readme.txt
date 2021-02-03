@@ -171,6 +171,23 @@ ToolBar的基本使用
   29 短信sdk集成
   用户注册
 
+  30 获取短信验证
+  短信验证码sdk文档
+  请求，回调
+
+  31 支付sdk
+  支付宝，微信支付，百度钱包(公司才可以申请)
+  第三方聚合：ping++(公司才可以申请);Bmob(个人可申请，不专业)
+  服务端集成
+  ping++集成：https://github.com/PingPlusPlus/pingpp-android/tree/master
+  https://www.pingxx.com/docs/client/android.html
+
+  32 提交订单
+
+  33 支付
+
+  34 添加收货地址
+
 
 
 

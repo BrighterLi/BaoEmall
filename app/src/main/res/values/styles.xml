@@ -138,7 +138,11 @@
         <item name="android:textColorHint">@color/border_color</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@null</item>
+    </style>
 
+    <style name="radioButton">
+        <item name="android:background">@drawable/selector_checkbox_green</item>
+        <item name="android:button">@null</item>
     </style>
 
 </resources>

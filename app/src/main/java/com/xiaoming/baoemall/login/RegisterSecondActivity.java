@@ -127,14 +127,14 @@ public class RegisterSecondActivity extends BaseActivity {
         return builder.toString();
     }
 
-    //提交注册
+    //提交验证码
     private void submitCode() {
         String vCode = mEtCode.getText().toString().trim();
-
         if (TextUtils.isEmpty(vCode)) {
             ToastUtils.show(this, R.string.smssdk_write_identify_code);
             return;
         }
+        //提交验证码给sdk进行验证
         SMSSDK.submitVerificationCode(countryCode, phone, vCode);
         dialog.show();
     }

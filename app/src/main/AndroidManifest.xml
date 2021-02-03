@@ -14,6 +14,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- 蓝牙分享所需的权限 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 银联需要的权限 -->
+    <uses-permission android:name="android.permission.NFC"/>
 
     <application
         android:name=".EmallApplication"
@@ -24,7 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".login.RegisterSecondActivity"></activity>
+        <activity android:name=".pay.PayResultActivity"></activity>
+        <activity android:name=".order.CreateOrderActivity" />
+        <activity android:name=".login.RegisterSecondActivity" />
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".login.LoginActivity" />
@@ -33,10 +37,36 @@
         <activity android:name=".mine.AddressListActivity" />
         <activity android:name=".WareDetailActivity" />
         <activity android:name=".WareListActivity" />
+
+        <!-- Ping++ sdk
+        <activity
+            android:name="com.pingplusplus.android.PaymentActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+         微信支付 sdk ，也是 Ping++ sdk 调用入口
+        <activity-alias
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.pingplusplus.android.PaymentActivity" />
+         支付宝 sdk
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+         银联支付 sdk
+        <activity android:name="com.unionpay.uppay.PayActivity" />
+         百付宝 sdk -->
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
